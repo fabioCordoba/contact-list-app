@@ -1,0 +1,5 @@
+<!--Patron email-->
+pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+
+<!--Patron telefono-->
+pattern="^(0034|\+34)?(\d\d\d)-? ?(\d\d)-? ?(\d)-? ?(\d)-? ?(\d\d)$"

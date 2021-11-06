@@ -1,0 +1,157 @@
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12">
+                <h1>Añadir Contacto</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <form #form="ngForm" (ngSubmit)="addContact()">
+                    <div class="row form-group">
+                        <div class="col-md-6 col-12 form-group">
+                            <label for="name">Nombre (*)</label>
+                            <input type="text"
+                                class="form-control" 
+                                name="name" 
+                                id="name" 
+                                placeholder="Nombre" 
+                                minlength="3" 
+                                required 
+                                #name="ngModel" 
+                                [(ngModel)]="contact.name" 
+                                [ngClass]="{
+                                    'is-valid':name.dirty && !name.errors,
+                                    'is-invalid':name.dirty && name.errors
+                                }">
+
+                                <div class="valid-feedback">
+                                    <span>Correcto</span>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <span *ngIf="name.errors?.required">Valor requerido</span>
+                                    <span *ngIf="name.errors?.minlength">Se necesita minimo {{name.errors?.minlength.requiredLength}} caracteres y llevas {{name.errors?.minlength.actualLength}} caracteres</span>
+                                </div>
+
+                        </div>
+
+                        <div class="col-md-6 col-12 form-group">
+                            <label for="surname">Apellidos (*)</label>
+                            <input type="text" 
+                                class="form-control" 
+                                name="surname" 
+                                id="surname" 
+                                placeholder="Apellido" 
+                                minlength="3" 
+                                required 
+                                #surname="ngModel" 
+                                [(ngModel)]="contact.surname"
+                                [ngClass]="{
+                                    'is-valid':surname.dirty && !surname.errors,
+                                    'is-invalid':surname.dirty && surname.errors
+                                }">
+
+                                <div class="valid-feedback">
+                                    <span>Correcto</span>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <span *ngIf="surname.errors?.required">Valor requerido</span>
+                                    <span *ngIf="surname.errors?.minlength">Se necesita minimo {{surname.errors?.minlength.requiredLength}} caracteres y llevas {{surname.errors?.minlength.actualLength}} caracteres</span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-12 form-group">
+                            <label for="description">Descripcion contacto</label>
+                            <textarea name="description" 
+                                id="description" 
+                                class="form-control" 
+                                maxlength="50" 
+                                placeholder="Descripcion de contacto" 
+                                #description="ngModel" 
+                                [(ngModel)]="contact.description"
+                                [ngClass]="{
+                                    'is-valid':description.dirty && !description.errors,
+                                    'is-invalid':description.dirty && description.errors
+                                }"></textarea>
+                                
+
+                                <div class="valid-feedback">
+                                    <span>Correcto</span>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <span *ngIf="description.errors?.required">Valor requerido</span>
+                                    <span *ngIf="description.errors?.minlength">Se necesita minimo {{description.errors?.minlength.requiredLength}} caracteres y llevas {{description.errors?.minlength.actualLength}} caracteres</span>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-6 col-12 form-group">
+                            <label for="sex">sexo</label>
+                            <select name="sex" id="sex" class="custom-select is-valid" #sex="ngModel" [(ngModel)]="contact.sex">
+                                <option value="hombre">Hombre</option>
+                                <option value="mujer">Mujer</option>
+                            </select>
+                            <div class="valid-feedback">
+                                <span>Correcto</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-12 form-group">
+                            <label for="company">Empresa</label>
+                            <input type="text" value="" class="form-control is-valid" name="company" id="company" placeholder="Nombre de la empresa" maxlength="20" required #company="ngModel" [(ngModel)]="contact.company">
+                            <div class="valid-feedback">
+                                <span>Correcto</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-6 col-12 form-group">
+                            <label for="email">Email (*)</label>
+                            <input type="text" value="" class="form-control" name="email" id="email" placeholder="Correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"  required #email="ngModel" [(ngModel)]="contact.email"
+                            [ngClass]="{
+                                'is-valid':email.dirty && !email.errors,
+                                'is-invalid':email.dirty && email.errors
+                            }">
+                            <div class="valid-feedback">
+                                <span>Correcto</span>
+                            </div>
+                            <div class="invalid-feedback">
+                                <span *ngIf="email.errors?.required">Valor requerido</span>
+                                <span *ngIf="email.errors?.pattern">El formato no es correcto</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-12 form-group">
+                            <label for="tel">Telefono (*)</label>
+                            <input type="text" value="" class="form-control" name="tel" id="tel" placeholder="Telefono" pattern="^(0057|\+57)?(\d\d\d)-? ?(\d\d\d)-? ?(\d\d)-? ?(\d\d)$" required #telephone="ngModel" [(ngModel)]="contact.telephone"
+                            [ngClass]="{
+                                'is-valid':telephone.dirty && !telephone.errors,
+                                'is-invalid':telephone.dirty && telephone.errors
+                            }">
+                            <div class="valid-feedback">
+                                <span>Correcto</span>
+                            </div>
+                            <div class="invalid-feedback">
+                                <span *ngIf="telephone.errors?.required">Valor requerido</span>
+                                <span *ngIf="telephone.errors?.pattern">El formato no es correcto</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <button [disabled]="form.invalid" type="submit"  class="btn btn-primary btn-block">Añadir contacto</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
